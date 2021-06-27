@@ -20,6 +20,14 @@ class LocationController extends BaseController
      * @Operation(
      *     tags={"Location"},
      *     summary="Retrieve a list of locations of a city",
+     *     @SWG\Parameter(
+     *         name="citySlug",
+     *         in="path",
+     *         description="Slug of the city",
+     *         required=true,
+     *         @SWG\Schema(type="string"),
+     *         type="string"
+     *     ),
      *     @SWG\Response(
      *         response="200",
      *         description="Returned when successful"
@@ -48,6 +56,22 @@ class LocationController extends BaseController
      * @Operation(
      *     tags={"Location"},
      *     summary="Show details of a location",
+     *     @SWG\Parameter(
+     *         name="citySlug",
+     *         in="path",
+     *         description="Slug of the city",
+     *         required=true,
+     *         @SWG\Schema(type="string"),
+     *         type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="locationSlug",
+     *         in="path",
+     *         description="Slug of the location",
+     *         required=true,
+     *         @SWG\Schema(type="string"),
+     *         type="string"
+     *     ),
      *     @SWG\Response(
      *         response="200",
      *         description="Returned when successful"

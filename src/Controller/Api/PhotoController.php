@@ -24,6 +24,22 @@ class PhotoController extends BaseController
      * @Operation(
      *     tags={"Photo"},
      *     summary="Retrieve a list of photos of a ride",
+     *     @SWG\Parameter(
+     *         name="citySlug",
+     *         in="path",
+     *         description="Provide a city slug",
+     *         required=true,
+     *         @SWG\Schema(type="string"),
+     *         type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="rideIdentifier",
+     *         in="path",
+     *         description="Provide a ride identifier",
+     *         required=true,
+     *         @SWG\Schema(type="string"),
+     *         type="string"
+     *     ),
      *     @SWG\Response(
      *         response="200",
      *         description="Returned when successful"
@@ -111,129 +127,147 @@ class PhotoController extends BaseController
      *     summary="Lists photos",
      *     @SWG\Parameter(
      *         name="regionSlug",
-     *         in="body",
+     *         in="query",
      *         description="Provide a region slug",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="citySlug",
-     *         in="body",
+     *         in="query",
      *         description="Provide a city slug",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="rideIdentifier",
-     *         in="body",
+     *         in="query",
      *         description="Provide a ride identifier",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="year",
-     *         in="body",
+     *         in="query",
      *         description="Limit the result set to this year. If not set, we will search in the current month.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="integer"),
+     *         type="integer"
      *     ),
      *     @SWG\Parameter(
      *         name="month",
-     *         in="body",
+     *         in="query",
      *         description="Limit the result set to this year. Must be combined with 'year'. If not set, we will search in the current month.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="integer"),
+     *         type="integer"
      *     ),
      *     @SWG\Parameter(
      *         name="day",
-     *         in="body",
+     *         in="query",
      *         description="Limit the result set to this day.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="integer"),
+     *         type="integer"
      *     ),
      *     @SWG\Parameter(
      *         name="centerLatitude",
-     *         in="body",
+     *         in="query",
      *         description="Latitude of a coordinate to search photos around in a given radius.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="centerLongitude",
-     *         in="body",
+     *         in="query",
      *         description="Longitude of a coordinate to search photos around in a given radius.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="radius",
-     *         in="body",
+     *         in="query",
      *         description="Radius to look around for photos.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbEastLongitude",
-     *         in="body",
+     *         in="query",
      *         description="East longitude of a bounding box to look for photos.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbWestLongitude",
-     *         in="body",
+     *         in="query",
      *         description="West longitude of a bounding box to look for photos.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbNorthLatitude",
-     *         in="body",
+     *         in="query",
      *         description="North latitude of a bounding box to look for photos.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbSouthLatitude",
-     *         in="body",
+     *         in="query",
      *         description="South latitude of a bounding box to look for photos.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="orderBy",
-     *         in="body",
+     *         in="query",
      *         description="Choose a property to sort the list by.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="orderDirection",
-     *         in="body",
+     *         in="query",
      *         description="Sort ascending or descending.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="distanceOrderDirection",
-     *         in="body",
+     *         in="query",
      *         description="Enable distance sorting in combination with radius query.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="startValue",
-     *         in="body",
+     *         in="query",
      *         description="Start ordered list with provided value.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="size",
-     *         in="body",
+     *         in="query",
      *         description="Length of resulting list. Defaults to 10.",
      *         required=false,
-     *         @SWG\Schema(type="integer")
+     *         @SWG\Schema(type="integer"),
+     *         type="integer"
      *     ),
      *     @SWG\Response(
      *         response="200",

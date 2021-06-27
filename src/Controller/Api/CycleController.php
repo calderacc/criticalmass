@@ -23,52 +23,59 @@ class CycleController extends BaseController
      *     summary="Returns a list of city cycles",
      *     @SWG\Parameter(
      *         name="citySlug",
-     *         in="body",
+     *         in="query",
      *         description="Provide a city slug",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="regionSlug",
-     *         in="body",
+     *         in="query",
      *         description="Provide a region slug",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="validFrom",
-     *         in="body",
+     *         in="query",
      *         description="Only retrieve cycles valid after the provied date",
      *         required=false,
-     *         @SWG\Schema(type="date")
+     *         @SWG\Schema(type="date"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="validUntil",
-     *         in="body",
+     *         in="query",
      *         description="Only retrieve cycles valid before the provied date",
      *         required=false,
-     *         @SWG\Schema(type="date")
+     *         @SWG\Schema(type="date"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="validNow",
-     *         in="body",
+     *         in="query",
      *         description="Only retrieve cycles valid for the current month",
      *         required=false,
-     *         @SWG\Schema(type="bool")
+     *         @SWG\Schema(type="bool"),
+     *         type="boolean"
      *     ),
      *     @SWG\Parameter(
      *         name="dayOfWeek",
-     *         in="body",
+     *         in="query",
      *         description="Limit the results to this day of week",
      *         required=false,
-     *         @SWG\Schema(type="int")
+     *         @SWG\Schema(type="int"),
+     *         type="integer"
      *     ),
      *     @SWG\Parameter(
      *         name="weekOfMonth",
-     *         in="body",
+     *         in="query",
      *         description="Limit the results to this week of month",
      *         required=false,
-     *         @SWG\Schema(type="int")
+     *         @SWG\Schema(type="int"),
+     *         type="integer"
      *     ),
      *     @SWG\Response(
      *         response="200",

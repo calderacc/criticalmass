@@ -8,7 +8,6 @@ use App\Entity\City;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\Operation;
-use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,108 +67,123 @@ class CityController extends BaseController
      *     summary="Returns a list of critical mass cities",
      *     @SWG\Parameter(
      *         name="name",
-     *         in="body",
+     *         in="query",
      *         description="Name of the city",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="regionSlug",
-     *         in="body",
+     *         in="query",
      *         description="Provide a region slug",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="centerLatitude",
-     *         in="body",
+     *         in="query",
      *         description="Latitude of a coordinate to search cities around in a given radius.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="centerLongitude",
-     *         in="body",
+     *         in="query",
      *         description="Longitude of a coordinate to search cities around in a given radius.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="radius",
-     *         in="body",
+     *         in="query",
      *         description="Radius to look around for cities.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbEastLongitude",
-     *         in="body",
+     *         in="query",
      *         description="East longitude of a bounding box to look for cities.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbWestLongitude",
-     *         in="body",
+     *         in="query",
      *         description="West longitude of a bounding box to look for cities.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbNorthLatitude",
-     *         in="body",
+     *         in="query",
      *         description="North latitude of a bounding box to look for cities.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="bbSouthLatitude",
-     *         in="body",
+     *         in="query",
      *         description="South latitude of a bounding box to look for cities.",
      *         required=false,
-     *         @SWG\Schema(type="number")
+     *         @SWG\Schema(type="number"),
+     *         type="number"
      *     ),
      *     @SWG\Parameter(
      *         name="orderBy",
-     *         in="body",
+     *         in="query",
      *         description="Choose a property to sort the list by.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="orderDirection",
-     *         in="body",
+     *         in="query",
      *         description="Sort ascending or descending.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="distanceOrderDirection",
-     *         in="body",
+     *         in="query",
      *         description="Enable distance sorting in combination with radius query.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="startValue",
-     *         in="body",
+     *         in="query",
      *         description="Start ordered list with provided value.",
      *         required=false,
-     *         @SWG\Schema(type="string")
+     *         @SWG\Schema(type="string"),
+     *         type="string"
      *     ),
      *     @SWG\Parameter(
      *         name="size",
-     *         in="body",
+     *         in="query",
      *         description="Length of resulting list. Defaults to 10.",
      *         required=false,
-     *         @SWG\Schema(type="integer")
+     *         @SWG\Schema(type="integer"),
+     *         type="integer"
      *     ),
      *     @SWG\Parameter(
      *         name="extended",
-     *         in="body",
+     *         in="query",
      *         description="Set true to retrieve a more detailed list.",
      *         required=false,
-     *         @SWG\Schema(type="boolean")
+     *         @SWG\Schema(type="boolean"),
+     *         type="boolean"
      *     ),
      *     @SWG\Response(
      *         response="200",
@@ -207,6 +221,14 @@ class CityController extends BaseController
      * @Operation(
      *     tags={"City"},
      *     summary="Shows a critical mass city",
+     *     @SWG\Parameter(
+     *         name="citySlug",
+     *         in="path",
+     *         description="Slug of the city",
+     *         required=true,
+     *         @SWG\Schema(type="string"),
+     *         type="string"
+     *     ),
      *     @SWG\Response(
      *         response="200",
      *         description="Returned when successful"
